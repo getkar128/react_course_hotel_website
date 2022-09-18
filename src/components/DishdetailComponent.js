@@ -28,7 +28,7 @@ class DishDetail extends Component {
 
 
     renderComments(dish) {
-        if (dish != null) {
+        if (dish != null && dish.comments != null) {
             const comments = dish.comments.map((comment)=>{
                 // const date = format(comment.date.slice(0, 10),'MMMM dd, yyyy')
                 const date = comment.date.slice(0, 10).split('-')
@@ -38,7 +38,7 @@ class DishDetail extends Component {
                 return (
                 <div key={comment.id} className='m-1'>
                     <li className="m-2">{comment.comment}</li>
-                    <li className="m-2">-- {comment.author}, {newDate}</li>
+                    <li className="m-2">-- {comment.author}, {new Intl.DateTimeFormat('en-US', {year: 'numeric', month:'short', day:'2-digit'}).format(new Date(Date.parse(comment.date)))}</li>
                 </div>
                 )
             })
@@ -61,14 +61,15 @@ class DishDetail extends Component {
     render() {
         
         return (
-            
-            <div className="row">
-                <div className="col-12 col-md-5 m-1">
-                    {this.renderDish(this.props.dish)}
-                </div>
-            
-                <div className="col-12 col-md-5 m-1">
-                    {this.renderComments(this.props.dish)}
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-md-5 m-1">
+                        {this.renderDish(this.props.dish)}
+                    </div>
+                
+                    <div className="col-12 col-md-5 m-1">
+                        {this.renderComments(this.props.dish)}
+                    </div>
                 </div>
             </div>
         )
