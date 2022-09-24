@@ -6,7 +6,7 @@ function About(props) {
 
     const RenderLeader = ({leader})=> {
         return (
-            <div key={leader.id} className='row'>
+                <div key={leader.id} className='col-12 mt-5'>
                 <Media tag='li' className='mb-2'>
                     <Media left>
                         <Media object src={leader.image} alt={leader.name}/>
@@ -17,7 +17,7 @@ function About(props) {
                         <p>{leader.description}</p>
                     </Media>
                 </Media>
-            </div>
+                </div>
         )
 
     }
