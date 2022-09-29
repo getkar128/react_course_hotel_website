@@ -44,4 +44,9 @@ address{
 
 .btn {
     margin-top: 0.5rem;
+    box-shadow: none;
+}
+
+.comment-header{
+    padding-top: 3rem;
 }
