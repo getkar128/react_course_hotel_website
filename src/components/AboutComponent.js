@@ -1,28 +1,34 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media} from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { baseUrl} from '../shared/baseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components'
 
 function About(props) {
 
     const RenderLeader = ({leader})=> {
         return (
+            <Stagger in> 
                 <div key={leader.id} className='col-12 mt-5'>
                 <Media tag='li' className='mb-2'>
                     <Media left>
-                        <Media object src={leader.image} alt={leader.name}/>
+                        <Media object src={baseUrl + leader.image} alt={leader.name}/>
                     </Media>
-                    <Media body className='ml-5'>
-                        <Media heading>{leader.name}</Media>
-                        <p>{leader.designation}</p>
-                        <p>{leader.description}</p>
-                    </Media>
+                    <Fade in>
+                        <Media body className='ml-5'>
+                            <Media heading>{leader.name}</Media>
+                            <p>{leader.designation}</p>
+                            <p>{leader.description}</p>
+                        </Media>
+                    </Fade>
                 </Media>
                 </div>
+            </Stagger>
         )
 
     }
 
-    const leaders = props.leaders.map((leader) => {
+    const leaders = props.leaders.leaders.map((leader) => {
         return (
             <RenderLeader leader={leader} />
         );
@@ -78,16 +84,19 @@ function About(props) {
                     </Card>
                 </div>
             </div>
-            <div className="row row-content">
-                <div className="col-12">
-                    <h2>Corporate Leadership</h2>
+            <FadeTransform in
+                 transformProps={{ exitTransform: 'scale(0.5) translateY(-50%)'}}>
+                <div className="row row-content">
+                    <div className="col-12">
+                        <h2>Corporate Leadership</h2>
+                    </div>
+                    <div className="col-12">
+                        <Media list>
+                            {leaders}
+                        </Media>
+                    </div>
                 </div>
-                <div className="col-12">
-                    <Media list>
-                        {leaders}
-                    </Media>
-                </div>
-            </div>
+            </FadeTransform> 
         </div>
     );
 }
