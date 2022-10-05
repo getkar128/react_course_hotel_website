@@ -209,6 +209,14 @@
       "comment": "Test Comment",
       "date": "2022-10-01T14:18:29.511Z",
       "id": 20
+    },
+    {
+      "dishId": 0,
+      "rating": "4",
+      "author": "Karthik",
+      "comment": "Second test comment",
+      "date": "2022-10-03T07:25:36.774Z",
+      "id": 21
     }
   ],
   "promotions": [
